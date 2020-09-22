@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Threading;
-using Microsoft.CSharp; // You can remove this if you don't need dynamic type in .Net Standard tasks
 using AwsSignatureVersion4;
 using System.Net.Http;
 using System.Text;
@@ -40,7 +39,7 @@ namespace Frends.Community.AWS.Http
         /// <param name="options">AWS authentication and optional parameters</param>
         /// <param name="cancellationToken"></param>
         /// <returns>Object with the following properties: string Body, Dictionary(string,string) Headers. int StatusCode</returns>   
-        public static async Task<object> HttpRequestAWSSigV4([PropertyTab] Input input, [PropertyTab] Options options, CancellationToken cancellationToken)
+        public static async Task<object> HttpRequestWithAWSSigV4([PropertyTab] Input input, [PropertyTab] Options options, CancellationToken cancellationToken)
         {
             var httpClient = GetHttpClientForOptions(options);
             var headers = GetHeaderDictionary(input.Headers);

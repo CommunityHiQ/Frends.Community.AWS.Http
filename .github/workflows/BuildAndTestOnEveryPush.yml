@@ -18,7 +18,11 @@ jobs:
     
     - name: Test
       env:
-        EXAMPLE_ENVIROMENT_VARIABLE:  ${{ secrets.EXAMPLE_ENVIROMENT_VARIABLE }}
+        HIQ_AWSGATEWAY_URL:  ${{ secrets.HIQ_AWSGATEWAY_URL }}
+        HIQ_AWSGATEWAY_ACCESSKEY:  ${{ secrets.HIQ_AWSGATEWAY_ACCESSKEY }}
+        HIQ_AWSGATEWAY_SECRETKEY:  ${{ secrets.HIQ_AWSGATEWAY_SECRETKEY }}
+        HIQ_AWSGATEWAY_SERVICENAME:  ${{ secrets.HIQ_AWSGATEWAY_SERVICENAME }}
+        HIQ_AWSGATEWAY_REGION:  ${{ secrets.HIQ_AWSGATEWAY_REGION }}
       run: dotnet test
       
     - name: Pack release version of task
