@@ -1,12 +1,13 @@
+
 # Frends.Community.AWS.Http
 
-frends Community Task for AWSHttpTasks
+This repository is for frends Community HTTP tasks that have AWS functionality.
 
 [![Actions Status](https://github.com/CommunityHiQ/Frends.Community.AWS.Http/workflows/PackAndPushAfterMerge/badge.svg)](https://github.com/CommunityHiQ/Frends.Community.AWS.Http/actions) ![MyGet](https://img.shields.io/myget/frends-community/v/Frends.Community.AWS.Http) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
 - [Installing](#installing)
 - [Tasks](#tasks)
-     - [AWSHttpTasks](#AWSHttpTasks)
+     - [HttpRequestWithAWSSigV4](#HttpRequestWithAWSSigV4)
 - [Building](#building)
 - [Contributing](#contributing)
 - [Change Log](#change-log)
@@ -18,35 +19,41 @@ https://www.myget.org/F/frends-community/api/v3/index.json and in Gallery view i
 
 # Tasks
 
-## AWSHttpTasks
+## HttpRequestWithAWSSigV4
 
-Repeats message
+Generic http request task that signs the request using AWS Signature Version 4. Uses 3rd party library [AwsSignatureVersion4](https://github.com/FantasticFiasco/aws-signature-version-4) to perform the signing. 
 
 ### Properties
 
 | Property | Type | Description | Example |
 | -------- | -------- | -------- | -------- |
-| Message | `string` | Some string that will be repeated. | `foo` |
+| Message | string | The message to be sent with the request. Not used for Get requests | `{"Name" : "Adam", "Age":42}` |
+| Method| Enum(GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS, CONNECT) | Http method of request. | `POST` |
+| Url| string | The URL with protocol and path to call | `https://abcd1234.execute-api.us-east-1.amazonaws.com/stagename/` |
+| Headers| Array{Name: string, Value: string} | List of HTTP headers to be added to the request. | `Name = Content-Type, Value = application/json` |
 
 ### Options
 
 | Property | Type | Description | Example |
 | -------- | -------- | -------- | -------- |
-| Amount | `int` | Amount how many times message is repeated. | `3` |
-| Delimiter | `string` | Character(s) used between replications. | `, ` |
+| AccessKey | string | AWS_IAM access key |
+| SecretKey | string | AWS_IAM secret key |
+| Region | Enum| AWS region |
+| ServiceName | string | Name of the AWS service. Default value is 'execute-api' | `execute-api` |
+| Connection Timeout Seconds | int | Timeout in seconds to be used for the connection and operation. Default is 30 seconds. |
+| Follow Redirects | bool | If FollowRedirects is set to false, all responses with an HTTP status code from 300 to 399 is returned to the application. Default is true.|
+| Allow Invalid Certificate | bool | Do not throw an exception on certificate error. Setting this to true is discouraged in production. |
+| Throw Exception On ErrorResponse | bool | Throw a WebException if return code of request is not successful. |
+| Allow Invalid Response Content Type Char Set | bool | Some Api's return faulty content-type charset header. If set to true this overrides the returned charset. |
 
 ### Returns
 
-A result object with parameters.
-
 | Property | Type | Description | Example |
 | -------- | -------- | -------- | -------- |
-| Replication | `string` | Repeated string. | `foo, foo, foo` |
+| Body | string | Response body as string |
+| Headers | Dictionary<string,string> | Response headers |
+| StatusCode | int | Response status code |
 
-Usage:
-To fetch result use syntax:
-
-`#result.Replication`
 
 # Building
 
@@ -81,4 +88,4 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 
 | Version | Changes |
 | ------- | ------- |
-| 0.0.1   | Development stil going on. |
+| 0.0.1   | Development still going on. |
