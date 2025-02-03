@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	<TargetFrameworks>netstandard2.0;net471</TargetFrameworks>
+	<TargetFrameworks>netstandard2.0;net471;net6.0;net8.0</TargetFrameworks>
     <authors>HiQ Finland</authors>
     <copyright>HiQ Finland</copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -9,7 +9,7 @@
     <IncludeSource>true</IncludeSource>
     <PackageTags>Frends</PackageTags>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,10 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AwsSignatureVersion4" Version="1.3.1" />
+    <PackageReference Include="AwsSignatureVersion4" Version="1.2.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
   </ItemGroup>
 
 </Project>
-
