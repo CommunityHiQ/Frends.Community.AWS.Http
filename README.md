@@ -89,3 +89,4 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 | Version | Changes |
 | ------- | ------- |
 | 0.0.1   | Development still going on. |
+| 0.0.3   | Targeted to .NET6 and 8 and updated AwsSignatureVersion4 to 1.2.0 and System.ComponentModel.Annotations to 5.0.0. |
